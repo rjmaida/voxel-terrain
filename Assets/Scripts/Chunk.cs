@@ -11,7 +11,8 @@ public class Chunk : MonoBehaviour
     public Block[,,] blocks = new Block[chunkSize, chunkSize, chunkSize];
 
     public static int chunkSize = 16;
-    public bool update = true;
+    public bool update = false;
+    public bool rendered;
 
     MeshFilter filter;
     MeshCollider coll;
@@ -73,6 +74,7 @@ public class Chunk : MonoBehaviour
     // Updates the chunk based on its contents
     void UpdateChunk()
     {
+        rendered = true;
         MeshData meshData = new MeshData();
 
         for (int x = 0; x < chunkSize; x++)
@@ -81,7 +83,10 @@ public class Chunk : MonoBehaviour
             {
                 for (int z = 0; z < chunkSize; z++)
                 {
-                    meshData = blocks[x, y, z].Blockdata(this, x, y, z, meshData);
+                    if (blocks[x, y, z] != null)
+                    {
+                        meshData = blocks[x, y, z].Blockdata(this, x, y, z, meshData);
+                    }      
                 }
             }
         }
