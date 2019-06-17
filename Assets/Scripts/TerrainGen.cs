@@ -17,6 +17,9 @@ public class TerrainGen
     float dirtNoise = 0.04f;
     float dirtNoiseHeight = 3;
 
+    float caveFrequency = 0.025f;
+    int caveSize = 7;
+
     public Chunk ChunkGen(Chunk chunk)
     {
         for (int x = chunk.pos.x; x < chunk.pos.x + Chunk.chunkSize; x++)
@@ -44,11 +47,13 @@ public class TerrainGen
 
         for (int y = chunk.pos.y; y < chunk.pos.y + Chunk.chunkSize; y++)
         {
-            if (y <= stoneHeight)
+            //Get a value to base cave generation on
+            int caveChance = GetNoise(x, y, z, caveFrequency, 100);
+            if (y <= stoneHeight && caveSize < caveChance)
             {
                 chunk.SetBlock(x - chunk.pos.x, y - chunk.pos.y, z - chunk.pos.z, new Block());
             }
-            else if (y <= dirtHeight)
+            else if (y <= dirtHeight && caveSize < caveChance)
             {
                 chunk.SetBlock(x - chunk.pos.x, y - chunk.pos.y, z - chunk.pos.z, new BlockGrass());
             }
@@ -56,7 +61,6 @@ public class TerrainGen
             {
                 chunk.SetBlock(x - chunk.pos.x, y - chunk.pos.y, z - chunk.pos.z, new BlockAir());
             }
-
         }
 
         return chunk;
