@@ -8,7 +8,7 @@ using System.Collections;
 public class Chunk : MonoBehaviour
 {
 
-    private Block[,,] blocks = new Block[chunkSize, chunkSize, chunkSize];
+    public Block[,,] blocks = new Block[chunkSize, chunkSize, chunkSize];
 
     public static int chunkSize = 16;
     public bool update = true;
@@ -59,6 +59,14 @@ public class Chunk : MonoBehaviour
         else
         {
             world.SetBlock(pos.x + x, pos.y + y, pos.z + z, block);
+        }
+    }
+
+    public void SetBlocksUnmodified()
+    {
+        foreach (Block block in blocks)
+        {
+            block.changed = false;
         }
     }
 
