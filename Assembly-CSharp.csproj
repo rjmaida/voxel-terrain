@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Block.cs" />
      <Compile Include="Assets\Scripts\Blocks\BlockAir.cs" />
+     <Compile Include="Assets\Scripts\Blocks\BlockGrass.cs" />
      <Compile Include="Assets\Scripts\Chunk.cs" />
      <Compile Include="Assets\Scripts\MeshData.cs" />
  <Reference Include="Unity.Timeline.Editor">
