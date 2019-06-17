@@ -60,9 +60,11 @@
      <Compile Include="Assets\Scripts\Blocks\BlockGrass.cs" />
      <Compile Include="Assets\Scripts\Chunk.cs" />
      <Compile Include="Assets\Scripts\MeshData.cs" />
+     <Compile Include="Assets\Scripts\Noise.cs" />
      <Compile Include="Assets\Scripts\Save.cs" />
      <Compile Include="Assets\Scripts\Serialization.cs" />
      <Compile Include="Assets\Scripts\Terrain.cs" />
+     <Compile Include="Assets\Scripts\TerrainGen.cs" />
      <Compile Include="Assets\Scripts\World.cs" />
      <Compile Include="Assets\Scripts\WorldPos.cs" />
  <Reference Include="Unity.Timeline.Editor">
